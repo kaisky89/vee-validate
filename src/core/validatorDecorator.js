@@ -33,7 +33,13 @@ export default class ScopedValidator {
   }
 
   get fields () {
-    return new FieldBag(this._base.fields.filter({ vmId: this.id }));
+    return new FieldBag(
+      this &&
+      this._base &&
+      this._base.fields &&
+      this._base.fields.filter &&
+      this._base.fields.filter({ vmId: this.id })
+    );
   }
 
   get dictionary () {
